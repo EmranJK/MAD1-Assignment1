@@ -53,4 +53,28 @@ object Functions {
         }
         return ("Didn't Find It")
     }
+
+    fun filterProducts(array : ArrayList<ShopModel>, max : Int) : String{
+        /**
+         * This function filters products in an array by max price
+         * given a max price the function will output all products that have a price less than or equal to the max price provided
+         */
+
+        var temp = ""
+        for (i in 0..array.size-1){
+            if (array[i].price <= max){
+                //println(a[i] + " " + b[i].toString())
+                temp+=((i+1).toString()+". " + array[i].product_name + " " + "( $" + array[i].price.toString()+" )" + " " +  array[i].id.toString() + " " + array[i].category + " (" + array[i].brand) + ")\n"
+            }
+        }
+        return temp
+    }
+
+
+    fun updateCart(array1 : ArrayList<ShopModel>, array2 : ArrayList<ShopModel>, index1: Int, index2: Int){
+        /**
+         * This function will replace a product from array2 by its index1 with a product from array1 by its index2
+         */
+        array2[index1 - 1] = array1[index2 - 1]
+    }
 }
