@@ -404,7 +404,46 @@ class MView : View() {
             }
         }
 
-        
+        fieldset {
+            /**
+             * In this fieldset, a textfield is created to hold the name or the first few chars of a product
+             * Then a button is created to take the string from the textfield and calls the seachGUI function
+             * It then outputs the product if it exists in the productsGUI array
+             */
+
+            field("Search For Products In Shop By Name") {
+                textfield(search)
+            }
+
+
+            button("Search") {
+                action {
+
+                    output.value = SearchGUI(search.value)
+                }
+            }
+        }
+
+
+
+        fieldset {
+            /**
+             * In this fieldset, a textfield is created to hold the max price
+             * Then a button is created to take the integer from the textfield and calls the filterGUI function
+             * It then outputs all the products that have a price less than or equal to the integer given
+             */
+            field("Filter Products By Max Price") {
+                textfield(filter)
+            }
+
+
+            button("Filter") {
+                action {
+
+                    output.value = FilterGUI(filter.value)
+                }
+            }
+        }
 
 
     }
