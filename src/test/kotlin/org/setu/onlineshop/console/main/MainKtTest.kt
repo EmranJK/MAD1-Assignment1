@@ -77,4 +77,27 @@ internal class MainKtTest {
         assertEquals(testy, Functions.searchingProducts(productsTest, "A"))
     }
 
+    @Test
+    fun filter_by_max_price() {
+        /**
+         * This function tests the filterProducts function from the Functions class
+         */
+        // Functions.addingProducts(productsTest, cartTest, 1)
+        var testy = ( (0+1).toString()+". "  + productsTest[0].product_name + " " + "( $" + productsTest[0].price.toString()+" )" +  " "  + productsTest[0].id.toString()+ " "  + productsTest[0].category+ " ("  + productsTest[0].brand + ")\n")
+        assertEquals(testy, Functions.filterProducts(productsTest, 10))
+    }
+
+    @Test
+    fun update() {
+        /**
+         * This function tests the updateCart function from the Functions class
+         */
+        Functions.addingProducts(productsTest, cartTest, 1)
+        Functions.addingProducts(productsTest, cartTest, 2)
+        Functions.addingProducts(productsTest, cartTest, 4)
+        Functions.updateCart(productsTest, cartTest, 1, 3)
+        assertEquals("c", cartTest[0].product_name)
+
+    }
+
 }
