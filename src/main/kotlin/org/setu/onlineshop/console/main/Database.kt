@@ -89,4 +89,27 @@ object Database {
     }
 
 
+
+
+    fun add_cart(array : ArrayList<ShopModel>){
+        /**
+         * This function adds products to the cart_products table
+         */
+        try{
+            //addy()
+
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            val con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kotlin", "root", "")
+            println("OK")
+            val st = con.createStatement()
+            for (i in array){
+                val rs = st.executeUpdate("INSERT INTO `cart_products`(`name`, `price`, `id`, `category`, `brand`) VALUES ('${i.product_name}','${i.price}','${i.id}','${i.category}','${i.brand}')")
+            }
+        }
+        catch (e: SQLException){
+            e.printStackTrace()
+        }
+    }
+
+
 }
