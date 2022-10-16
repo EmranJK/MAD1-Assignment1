@@ -72,4 +72,21 @@ object Database {
     }
 
 
+    fun clear_cart(){
+        /**
+         * This function deletes everything from the cart_products table
+         */
+        try{
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            val con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kotlin", "root", "")
+            println("OK")
+            val st = con.createStatement()
+            val rs = st.executeUpdate("delete from cart_products")
+        }
+        catch (e: SQLException){
+            e.printStackTrace()
+        }
+    }
+
+
 }
