@@ -37,6 +37,92 @@ class MView : View() {
     }
 
 
+    fun addGUI(input : Int){
+        /**
+         * This function calls the addingProducts function from the Functions object
+         * It supplies the function with the required parameters for adding a product
+         * It then updates the total cost (costGUI)
+         * It then clears the cart_products table and refills it with the updated data from the cartGUI array
+         */
+
+        if (input in 1..productsGUI.size){
+
+            Functions.addingProducts(productsGUI, cartGUI, input)
+
+            costGUI += productsGUI[input-1].price
+
+            Database.clear_cart()
+            Database.add_cart(cartGUI)
+
+        }
+        else{
+            println("No such item")
+        }
+    }
+
+
+    fun removeGUI(input : Int){
+
+        /**
+         * This function calls the removeProducts function from the Functions object
+         * It supplies the function with the required parameters for removing a product from cart
+         * It then updates the total cost (costGUI)
+         * It then clears the cart_products table and refills it with the updated data from the cartGUI array
+         */
+
+        if (input in 1..cartGUI.size){
+
+            costGUI -= cartGUI[input-1].price
+            Functions.removeProducts(cartGUI, input)
+
+
+            Database.clear_cart()
+            Database.add_cart(cartGUI)
+
+        }
+
+        else{
+            println("No such item")
+        }
+
+    }
+
+
+    fun ListProductsGUI() : String{
+
+        /**
+         * This function lists all the products in the productsGUI array
+         * The array is already automatically filled with the relevant data from the database before the listing happens
+         * The filling happens when the dataGUI function is called
+         * So technically it is listing data from the database in an indirect way
+         */
+
+
+        return Functions.listingCartOrProducts(productsGUI)
+
+    }
+
+
+
+    fun ListCartGUI() : String{
+
+        /**
+         * This function lists all the products in the cartGUI array
+         * The array is already automatically filled with the relevant data from the database before the listing happens
+         * The filling happens when the dataGUI function is called
+         * So technically it is listing data from the database in an indirect way
+         */
+
+
+        return Functions.listingCartOrProducts(cartGUI)
+
+    }
+
+
+
+    
+
+
 
     val add = SimpleIntegerProperty()
     val remove = SimpleIntegerProperty()
