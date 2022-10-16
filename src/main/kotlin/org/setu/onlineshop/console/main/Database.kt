@@ -10,5 +10,20 @@ import java.sql.*;
 
 
 object Database {
-
+    @JvmStatic
+    fun connect(){
+        try{
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            val con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kotlin", "root", "")
+            println("OK")
+            val st = con.createStatement()
+            val rs = st.executeQuery("select * from products")
+            while(rs.next()){
+                println(rs.getString("id"))
+            }
+        }
+        catch (e: SQLException){
+            e.printStackTrace()
+        }
+    }
 }
