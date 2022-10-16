@@ -29,4 +29,27 @@ internal class MainKtTest {
         data()
     }
 
+    @Test
+    fun add() {
+        /**
+         * This function tests the addingProducts function from the Functions class
+         */
+
+        Functions.addingProducts(productsTest, cartTest, 1)
+        // println(cartTest[0].product_name)
+        assertEquals("a", cartTest[0].product_name)
+    }
+
+    @Test
+    fun remove() {
+        /**
+         * This function tests the removeProducts function from the Functions class
+         */
+        Functions.addingProducts(productsTest, cartTest, 1)
+        Functions.addingProducts(productsTest, cartTest, 2)
+        Functions.removeProducts(cartTest, 1)
+        assertEquals(1, cartTest.size)
+        assertEquals(65, cartTest[0].id)
+    }
+
 }
