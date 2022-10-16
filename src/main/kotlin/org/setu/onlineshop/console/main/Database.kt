@@ -26,4 +26,28 @@ object Database {
             e.printStackTrace()
         }
     }
+
+    fun get_products(array : ArrayList<ShopModel>){
+        /**
+         * This function is used to get all the products from the product table
+         * It then stores them all in the array taken in the parameter
+         */
+
+        try{
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            val con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kotlin", "root", "")
+            println("OK")
+            val st = con.createStatement()
+            val rs = st.executeQuery("select * from products")
+            while(rs.next()){
+                array.add(ShopModel(rs.getString("name"), rs.getDouble("price"), rs.getInt("id"), rs.getString("category"), rs.getString("brand")))
+                //println(rs.getString("id"))
+            }
+        }
+        catch (e: SQLException){
+            e.printStackTrace()
+        }
+    }
+
+
 }
