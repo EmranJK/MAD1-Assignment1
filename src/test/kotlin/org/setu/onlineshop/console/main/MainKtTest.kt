@@ -52,4 +52,29 @@ internal class MainKtTest {
         assertEquals(65, cartTest[0].id)
     }
 
+    @Test
+    fun list() {
+        /**
+         * This function tests the listingCartOrProducts function from the Functions class
+         */
+        Functions.addingProducts(productsTest, cartTest, 1)
+        //Functions.addingProducts(productsTest, cartTest, 2)
+        var testy = (productsTest[1-1].product_name + " " + "($" + productsTest[1-1].price.toString() + ") "+ productsTest[1-1].id + " " + productsTest[1-1].category + " (" + productsTest[1-1].brand+")\n")
+        assertEquals(testy, Functions.listingCartOrProducts(cartTest))
+    }
+
+    @Test
+    fun search() {
+        /**
+         * This function tests the searchingProducts function from the Functions class
+         */
+        Functions.addingProducts(productsTest, cartTest, 1)
+        Functions.addingProducts(productsTest, cartTest, 2)
+        Functions.addingProducts(productsTest, cartTest, 4)
+        var testy = ("FOUND IT: 1. " + cartTest[0].product_name + " " + "( $ " + cartTest[0].price.toString() + " )"  + " "  + cartTest[0].id.toString() + " "  + cartTest[0].category + " "  + cartTest[0].brand)
+        //println(Functions.searchingCart(cartTest, 23))
+
+        assertEquals(testy, Functions.searchingProducts(productsTest, "A"))
+    }
+
 }
