@@ -59,7 +59,7 @@ internal class MainKtTest {
          */
         Functions.addingProducts(productsTest, cartTest, 1)
         //Functions.addingProducts(productsTest, cartTest, 2)
-        var testy = (productsTest[1-1].product_name + " " + "($" + productsTest[1-1].price.toString() + ") "+ productsTest[1-1].id + " " + productsTest[1-1].category + " (" + productsTest[1-1].brand+")\n")
+        var testy = "1. "+ (productsTest[1-1].product_name + " " + "($" + productsTest[1-1].price.toString() + ") "+ productsTest[1-1].id + " " + productsTest[1-1].category + " (" + productsTest[1-1].brand+")\n")
         assertEquals(testy, Functions.listingCartOrProducts(cartTest))
     }
 
