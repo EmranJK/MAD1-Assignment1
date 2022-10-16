@@ -32,7 +32,7 @@ object Functions {
 
         var temp = ""
         for (i in 0..array.size-1){
-            temp+=(array[i].product_name + " " + "($" + array[i].price.toString() + ") " + array[i].id + " " + array[i].category + " (" + array[i].brand+")\n")
+            temp+=((i+1).toString() + ". " + array[i].product_name + " " + "($" + array[i].price.toString() + ") " + array[i].id + " " + array[i].category + " (" + array[i].brand+")\n")
         }
         return temp
     }
