@@ -284,5 +284,66 @@ class MView : View() {
          * The dataGUI function is called to load data from products table in database to productsGUI array
          * it also loads data from cart_products table in database to cartGUI array
          */
+        dataGUI()
+        logger.info { "Launching OnlineShop Console App" }
+
+        fieldset {
+            /**
+             * In this fieldset, a textfield is created to hold the index of product
+             * Then a button is created to take the index from the textfield and calls the addGUI function
+             * It then outputs the total cost in the output text area
+             */
+            field("Add product by index") {
+                textfield(add)
+            }
+
+
+            button("Add") {
+                action {
+                    if (add.value-1 > productsGUI.size-1 || add.value <= 0 ) {
+                        output.value = "No such item" + "\n" + ("TOTAL COST: $" + (costGUI.toString()))
+                    }
+                    else{
+                        addGUI(add.value)
+                        output.value = ("TOTAL COST: $" + (costGUI.toString()))
+
+                    }
+                }
+            }
+        }
+
+
+
+
+        fieldset {
+            /**
+             * In this fieldset, a textfield is created to hold the index of product
+             * Then a button is created to take the index from the textfield and calls the removeGUI function
+             * It then outputs the total cost in the output text area
+             */
+            field("Remove Product From Cart By Index") {
+                textfield(remove)
+            }
+
+
+            button("Remove") {
+                action {
+
+                    if (remove.value-1 > cartGUI.size-1 || remove.value <= 0 ) {
+                        output.value = "No such item" + "\n" + ("TOTAL COST: $" + (costGUI.toString()))
+                    }
+                    else{
+                        removeGUI(remove.value)
+                        output.value = ("TOTAL COST: $" + (costGUI.toString()))
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
     }
 }
