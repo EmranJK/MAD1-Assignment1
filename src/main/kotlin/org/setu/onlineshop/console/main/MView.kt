@@ -178,6 +178,22 @@ class MView : View() {
 
 
 
+    fun UpdateGUI(input1: Int, input2 :Int){
+
+        /**
+         * This function will call the updateCart function from Functions object to replace a product from cartGUI by its index with a product from productsGUI by its index
+         * The cart_products table in database will then be cleared and refilled with updated data
+         */
+
+        costGUI -= cartGUI[input1 - 1].price
+        Functions.updateCart(productsGUI, cartGUI, input1, input2)
+        costGUI += productsGUI[input2-1].price
+        Database.clear_cart()
+        Database.add_cart(cartGUI)
+    }
+
+
+
 
 
     fun FilterGUI(max: Int) : String{
