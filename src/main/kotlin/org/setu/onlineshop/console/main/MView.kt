@@ -342,7 +342,34 @@ class MView : View() {
 
 
 
+        fieldset {
+            /**
+             * In this fieldset, a button is created to output the value of the function ListProductsGUI() in the output textarea
+             */
 
+            button("List Products In Shop") {
+                action {
+
+                    output.value = ListProductsGUI()
+
+                }
+            }
+        }
+
+
+
+        fieldset {
+            /**
+             * In this fieldset, a button is created to output the value of the function ListCartGUI() in the output textarea
+             * It also outputs the total cost underneath
+             */
+            button("List Products In Cart") {
+                action {
+
+                    output.value = ListCartGUI() + "\n" + ("TOTAL COST: $" + (costGUI.toString()))
+                }
+            }
+        }
 
 
     }
