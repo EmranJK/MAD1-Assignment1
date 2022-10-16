@@ -13,6 +13,31 @@ import kotlin.math.absoluteValue
 
 class MView : View() {
 
+    private val logger = KotlinLogging.logger {}
+
+    var productGUI = ShopModel()
+    val productsGUI = ArrayList<ShopModel>()
+    var costGUI = 0.0
+
+    var cartGUI = ArrayList<ShopModel>()
+
+    var countGUI = 0
+
+    fun dataGUI() {
+        /**
+         * This function gets all data from products and products_cart tables in database
+         * It then loads the data in their relevant arrays (productsGUI and cartGUI)
+         * It then updates the total cost (costGUI) based on the products in cartGUI
+         */
+        Database.get_products(productsGUI)
+        Database.get_cart(cartGUI)
+        for (i in cartGUI){
+            costGUI+=i.price
+        }
+    }
+
+
+
     val add = SimpleIntegerProperty()
     val remove = SimpleIntegerProperty()
     //val predict_add = SimpleIntegerProperty()
