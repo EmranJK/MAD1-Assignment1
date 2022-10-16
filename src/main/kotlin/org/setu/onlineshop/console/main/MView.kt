@@ -120,7 +120,50 @@ class MView : View() {
 
 
 
-    
+    fun PredictAddGUI() : String{
+
+        /**
+         * This function lists all the products in the productsGUI array with the total price after adding any one of them
+         * The array is already automatically filled with the relevant data from the database before the listing happens
+         * The filling happens when the dataGUI function is called
+         * So technically it is listing data from the database in an indirect way
+         */
+
+        var longy = ""
+
+        for(i in 0..productsGUI.size-1) {
+            longy += ((i+1).toString()+". " + productsGUI[i].product_name + " " + "($" + productsGUI[i].price.toString()+")" + " " +  productsGUI[i].id.toString() + " " + productsGUI[i].category + " (" + productsGUI[i].brand + ") (TOTAL COST AFTER ADDING THIS PRODUCT: $" + (costGUI + productsGUI[i].price).toString() + ")")  + "\n"
+        }
+        return longy
+
+    }
+
+
+
+
+    fun PredictRemoveGUI() : String{
+
+        /**
+         * This function lists all the products in the cartGUI array with the total price after removing any one of them
+         * The array is already automatically filled with the relevant data from the database before the listing happens
+         * The filling happens when the dataGUI function is called
+         * So technically it is listing data from the database in an indirect way
+         */
+
+        var longy = ""
+
+
+        for(i in 0..cartGUI.size-1){
+            longy += ((i+1).toString()+". " + cartGUI[i].product_name + " " + "($" + cartGUI[i].price.toString()+")" + " " +  cartGUI[i].id.toString()  + " " + cartGUI[i].category + " (" + cartGUI[i].brand + ") (TOTAL COST AFTER REMOVING THIS PRODUCT: $" + (costGUI - cartGUI[i].price).toString() + ")") + "\n"
+        }
+        return longy
+
+
+    }
+
+
+
+
 
 
 
