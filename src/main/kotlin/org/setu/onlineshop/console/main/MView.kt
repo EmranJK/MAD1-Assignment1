@@ -163,6 +163,35 @@ class MView : View() {
 
 
 
+    fun SearchGUI(input: String) : String{
+        /**
+         * This function will call the searchingProducts function from the Functions object to search for products in productsGUI array
+         */
+
+        var longy = ""
+        longy = Functions.searchingProducts(productsGUI, input)
+
+        return longy
+
+
+    }
+
+
+
+
+
+    fun FilterGUI(max: Int) : String{
+        /**
+         * This function will filter all products in productsGUI array by max price
+         */
+
+
+        return Functions.filterProducts(productsGUI, max)
+
+    }
+
+
+
 
 
 
