@@ -372,5 +372,40 @@ class MView : View() {
         }
 
 
+        fieldset {
+
+            /**
+             * In this fieldset, a button is created to output the value of the function PredictAddGUI() in the output textarea
+             * It also outputs the total cost underneath
+             */
+
+            button("Predict Total Cost After Adding Products") {
+                action {
+
+                    output.value = PredictAddGUI() + "\n" + ("TOTAL COST: $" + (costGUI.toString()))
+
+                }
+            }
+        }
+
+
+        fieldset {
+
+            /**
+             * In this fieldset, a button is created to output the value of the function PredictRemoveGUI() in the output textarea
+             * It also outputs the total cost underneath
+             */
+
+            button("Predict Total Cost After Removing Products") {
+                action {
+                    output.value = PredictRemoveGUI() + "\n" + ("TOTAL COST: $" + (costGUI.toString()))
+
+                }
+            }
+        }
+
+        
+
+
     }
 }
