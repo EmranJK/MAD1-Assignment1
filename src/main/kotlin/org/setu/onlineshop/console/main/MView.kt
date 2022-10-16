@@ -446,5 +446,75 @@ class MView : View() {
         }
 
 
+        fieldset {
+            /**
+             * In this fieldset, two textfields are created
+             * The first text field takes the index of the product in the cartGUI which the user wants to replace
+             * The second text field takes the index of the product in productsGUI that the user wants to put in place of the product from cartGUI
+             * When the button is pressed it calls the UpdateGUI function on the indexes gathered from the 2 textfields
+             */
+            field("Update Products In Cart") {
+                textfield(update1)
+                textfield(update2)
+            }
+
+
+            button("Update") {
+                action {
+                    if (update1.value-1 > cartGUI.size-1 || update2.value-1 > productsGUI.size-1 || update1.value <= 0 || update2.value <= 0){
+                        output.value = "Provide valid indexes"
+                    }
+                    else{
+                        output.value = "Update completed"
+                        UpdateGUI(update1.value, update2.value)
+                    }
+                }
+            }
+        }
+
+
+        fieldset {
+            /**
+             * In this fieldset a text field is created to take a string as a coupon
+             * A button is then created to call the couponGUI function on the coupon taken from the textfield
+             */
+            field("Type A Coupon") {
+                textfield(coupon)
+            }
+
+
+            button("Use Coupon") {
+                action {
+
+                    if (coupon.value != "tenny" && coupon.value != "fifty"){
+                        output.value = "Provide valid coupon"
+                    }
+                    else if(countGUI > 0){
+                        couponGUI(coupon.value)
+                        output.value = "You already used a coupon"
+                    }
+                    else{
+                        couponGUI(coupon.value)
+                        output.value = "Coupon successfully applied"
+                    }
+
+
+                }
+            }
+        }
+
+
+        fieldset {
+            /**
+             * In this fieldset a text area is created to show outputs when buttons are press
+             * for example, it shows the products in productsGUI when the user presses on the button related to listing products etc.
+             */
+            field("OUTPUT") {
+                textarea(output).setMaxSize(500.0, 100.0)
+
+            }
+
+        }
+
     }
 }
