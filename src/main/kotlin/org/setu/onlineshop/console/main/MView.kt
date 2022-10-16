@@ -207,6 +207,58 @@ class MView : View() {
     }
 
 
+    fun couponGUI(input : String){
+        /**
+         * This function calls the discountGUI function to make discounts on prices
+         * If coupon tenny is used there will be a 10% discount
+         * If coupon fifty is used there will be a 50% discount
+         * Only one coupon can be used while the app is running
+         * The coupon can also be used only one time while the app is running
+         * To use a different coupon or to use the same one twice you must rerun the app
+         * Once the coupon is applied all the products prices in productsGUI and cartGUI will be deducted
+         * Once the app close or crash, all products in productsGUI will get their original prices back but products in cartGUI will maintain their new deducted prices
+         * When using a coupon again after rerunning the app, all products in productsGUI will have there prices deducted but only products in cartGUI that still have their original prices will have their prices deducted
+         * I.E. Coupon won't be applied on any products in cartGUI that had their prices deducted already
+         * The cart_products table in database will then be cleared and refilled with updated data
+         */
+
+        if (input == "tenny" && countGUI == 0){
+            countGUI+=1
+            discountGUI(0.10)
+        }
+        else if (input == "fifty" && countGUI == 0){
+            countGUI+=1
+            discountGUI(0.50)
+            println("Congrats!! Now you have a 50% discount on all products")
+            println("")
+        }
+        else{
+            countGUI+=1
+            println("Coupon Invalid, try again later")
+            println("")
+        }
+
+        Database.clear_cart()
+        Database.add_cart(cartGUI)
+    }
+
+
+    fun discountGUI(num : Double){
+        /**
+         * This function does the deduction process for the couponGUI function
+         */
+        costGUI = 0.0
+
+        for (i in productsGUI){
+
+            i.price -= (i.price * num)
+        }
+        for (i in cartGUI){
+            costGUI += i.price
+        }
+    }
+
+
 
 
 
