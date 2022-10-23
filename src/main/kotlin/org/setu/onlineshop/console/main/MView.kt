@@ -15,7 +15,7 @@ class MView : View() {
 
     private val logger = KotlinLogging.logger {}
 
-    var productGUI = ShopModel()
+    //var productGUI = ShopModel()
     val productsGUI = ArrayList<ShopModel>()
     var costGUI = 0.0
 

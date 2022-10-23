@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.7.20"
     application
     id("org.openjfx.javafxplugin") version "0.0.9"
 }
@@ -19,13 +19,14 @@ repositories {
 }
 
 
+
 dependencies {
     testImplementation(kotlin("test"))
     implementation("org.slf4j:slf4j-simple:1.7.36")
-    implementation ("io.github.microutils:kotlin-logging:2.1.23")
+    implementation ("io.github.microutils:kotlin-logging-jvm:3.0.2")
     implementation ("mysql:mysql-connector-java:8.0.30")
 
-    implementation ("no.tornado:tornadofx:1.7.20")
+    implementation ("no.tornado:tornadofx:1.7.19")
 
     testImplementation(kotlin("test"))
 
