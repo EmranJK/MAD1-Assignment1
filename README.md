@@ -11,6 +11,6 @@ I did this fix in a commit called "Fixed the tests" made on the 23 of October, I
 
 I also did a second short demo video just to show that the assignment is working fine and as before even after I added the changes to build.gradle and I put the link in the word document that I submitted
 
-Here is a screenshot of the tests passing, I tried to show that in the first demo but the video lagged when this happened:
+Here is a screenshot of the tests passing, I tried to show that in the first demo but the video lagged when I showed it in the video:
 
 ![tests passing](https://user-images.githubusercontent.com/46385867/197383213-a42cb9af-b705-40bb-a7e3-18c8c16cd851.PNG)
